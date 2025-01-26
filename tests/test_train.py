@@ -13,7 +13,7 @@ def test_train_model():
 
 def test_inference_model():
     # Predict model
-    img_path = os.path.join("test_data", "airplane.jpeg")
+    img_path = os.path.join("test_data", "airplane.jpg")
     model_result = predict(img_path)
     expected_result = "airplane"
 

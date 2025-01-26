@@ -32,5 +32,5 @@ def predict(img_path):
 
 
 if __name__ == "__main__":
-    img_path = os.path.join("test_data", "airplane.jpeg")
+    img_path = os.path.join("test_data", "airplane.jpg")
     print(f"Prediction: {predict(img_path)}")
