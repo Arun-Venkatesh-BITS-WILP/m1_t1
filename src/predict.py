@@ -1,10 +1,11 @@
 import numpy as np
+import os
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 
 # CIFAR-10 class labels
 class_names = [
-    "airplane", "automobile", "bird", "cat", "deer", "dog", 
+    "airplane", "automobile", "bird", "cat", "deer", "dog",
     "frog", "horse", "ship", "truck"
 ]
 
@@ -13,11 +14,11 @@ def predict(img_path):
     model = tf.keras.models.load_model("models/cnn_model.h5")
 
     # Preprocess the image
-    img = image.load_img(img_path, target_size=(32, 32))  # Resize image to 32x32 as required by CIFAR-10
-    img_array = image.img_to_array(img)  # Convert the image to a numpy array
-    img_array = np.expand_dims(img_array, axis=0)  # Add an extra dimension for batch size
-    img_array = tf.image.rgb_to_grayscale(img_array)  # Convert to grayscale using TensorFlow
-    img_array = img_array / 255.0  # Normalize the image to [0, 1] range
+    img = image.load_img(img_path, target_size=(32, 32))
+    img_array = image.img_to_array(img)
+    img_array = np.expand_dims(img_array, axis=0)
+    img_array = tf.image.rgb_to_grayscale(img_array)
+    img_array = img_array / 255.0
 
     # Make prediction
     prediction = model.predict(img_array)
@@ -30,5 +31,5 @@ def predict(img_path):
 
 
 if __name__ == "__main__":
-    img_path = r"D:\Users\KumarVe\Downloads\airplane.jpg"  # Replace with the path to your downloaded image
+    img_path = os.path.join("test_data", "airplane.jpeg")
     print(f"Prediction: {predict(img_path)}")

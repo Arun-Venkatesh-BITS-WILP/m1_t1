@@ -7,8 +7,8 @@ def load_data():
     # Load CIFAR-10 dataset
     (X_train, y_train), (X_test, y_test) = cifar10.load_data()
 
-    # Normalize pixel values to be between 0 and 1 and convert to grayscale
-    X_train = tf.image.rgb_to_grayscale(X_train)  # Convert to grayscale using TensorFlow
+    # Normalize pixel values
+    X_train = tf.image.rgb_to_grayscale(X_train)
     X_test = tf.image.rgb_to_grayscale(X_test)
     X_train = tf.cast(X_train, tf.float32) / 255.0
     X_test = tf.cast(X_test, tf.float32) / 255.0
@@ -18,7 +18,7 @@ def load_data():
 
 def train_model():
     X_train,y_train,X_test,y_test = load_data()
-    
+
     # Build the CNN model
     model = models.Sequential([
         layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 1)),

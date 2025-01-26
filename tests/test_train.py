@@ -12,13 +12,13 @@ def test_train_model():
 
 def test_inference_model():
     # Predict model
-    img_path = r"D:\Users\KumarVe\Downloads\airplane.jpg"  # Replace with the path to your downloaded image
+    img_path = os.path.join("test_data", "airplane.jpeg")
     model_result = predict(img_path)
     expected_result = 'airplane'
 
     # Assert if the predicted result matches the expected result
     assert model_result == expected_result, f"Test failed: Expected '{expected_result}', but got '{model_result}'"
-    
+
     print(f"Test passed: The predicted class is '{model_result}'")
 
 
