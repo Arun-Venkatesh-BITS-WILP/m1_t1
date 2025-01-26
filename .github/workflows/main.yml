@@ -26,6 +26,7 @@ jobs:
         run: flake8 src tests
 
   test:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -44,6 +45,7 @@ jobs:
         run: pytest tests/
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Deploy (Dummy Stage)
