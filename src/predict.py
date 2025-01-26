@@ -9,6 +9,7 @@ class_names = [
     "frog", "horse", "ship", "truck"
 ]
 
+
 def predict(img_path):
     # Load the trained model (saved as .h5 file)
     model = tf.keras.models.load_model("models/cnn_model.h5")
@@ -22,7 +23,7 @@ def predict(img_path):
 
     # Make prediction
     prediction = model.predict(img_array)
-    predicted_class_index = np.argmax(prediction, axis=1)  # Get the index of the class with the highest probability
+    predicted_class_index = np.argmax(prediction, axis=1)
 
     # Get the class name corresponding to the predicted index
     predicted_class_name = class_names[predicted_class_index[0]]
